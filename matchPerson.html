@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/loading.css">
+<script src="./js/loading.js" defer></script>
+    <title>لعبة اختيار الشخص الصحيح للأطفال</title>
+    <style>
+        body {
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+            background-color: #ffebf3;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: #d23369;
+        }
+        
+        .game-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(210, 51, 105, 0.2);
+            border: 4px solid #ff9ec6;
+        }
+        
+        h1 {
+            color: #ff4d94;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(255, 182, 193, 0.8);
+        }
+        
+        .question {
+            font-size: 22px;
+            margin-bottom: 25px;
+            background-color: #ffd6e7;
+            padding: 15px;
+            border-radius: 15px;
+            border: 3px dashed #ff85b8;
+        }
+        
+        .options-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .option {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid #ffb6c1;
+            box-shadow: 0 5px 10px rgba(255, 77, 148, 0.1);
+            font-size: 40px;
+        }
+        
+        .option:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(255, 77, 148, 0.3);
+        }
+        
+        .score {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #ff4d94;
+        }
+        
+        .feedback {
+            font-size: 24px;
+            font-weight: bold;
+            height: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .correct {
+            color: #4CAF50;
+        }
+        
+        .wrong {
+            color: #F44336;
+        }
+        
+        .next-btn {
+            background-color: #ff4d94;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            box-shadow: 0 5px 10px rgba(255, 77, 148, 0.3);
+        }
+        
+        .next-btn:hover {
+            background-color: #d23369;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(255, 77, 148, 0.4);
+        }
+        
+        .next-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            display: none;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            border-radius: 50%;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 20px;
+            background-color: #ffd6e7;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: #ff4d94;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        
+        .game-over {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>👶 لعبة اختيار الشخص الصحيح 👧</h1>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        
+        <div class="score">النقاط: <span id="score-value">0</span></div>
+        
+        <div class="question" id="question">اختر الشخص الصحيح!</div>
+        
+        <div class="feedback" id="feedback"></div>
+        
+        <div class="options-container" id="options-container">
+            <!-- الخيارات ستضاف هنا بالجافاسكريبت -->
+        </div>
+        
+        <button class="next-btn" id="next-btn" disabled>التالي</button>
+    </div>
+    
+    <div class="celebration" id="celebration"></div>
+    
+    <script>
+        // بيانات الأسئلة
+        const questions = [
+            {
+                question: "اختر الطبيب",
+                options: ["👨‍⚕️", "👩‍🍳", "👨‍🌾", "👩‍🎤"],
+                correct: 0
+            },
+            {
+                question: "اختر الطاهي",
+                options: ["👨‍🔬", "👩‍🍳", "👨‍🏫", "👩‍🚒"],
+                correct: 1
+            },
+            {
+                question: "اختر المدرس",
+                options: ["👨‍🏫", "👩‍💻", "👨‍✈️", "👩‍🎨"],
+                correct: 0
+            },
+            {
+                question: "اختر رجل الإطفاء",
+                options: ["👨‍🔧", "👩‍🚀", "👨‍🚒", "👩‍🔬"],
+                correct: 2
+            },
+            {
+                question: "اختر الطيار",
+                options: ["👨‍✈️", "👩‍🔧", "👨‍🎓", "👩‍🚀"],
+                correct: 0
+            },
+            {
+                question: "اختر الطالب",
+                options: ["👨‍🎤", "👩‍🎓", "👨‍🔬", "👩‍🎨"],
+                correct: 1
+            },
+            {
+                question: "اختر المزارع",
+                options: ["👨‍🌾", "👩‍💼", "👨‍💻", "👩‍🏭"],
+                correct: 0
+            },
+            {
+                question: "اختر العامل في المصنع",
+                options: ["👨‍🎨", "👩‍🏭", "👨‍🚀", "👩‍💻"],
+                correct: 1
+            },
+            {
+                question: "اختر العالم",
+                options: ["👨‍🔬", "👩‍🍳", "👨‍🍳", "👩‍🎤"],
+                correct: 0
+            },
+            {
+                question: "اختر المغنية",
+                options: ["👨‍🎤", "👩‍🎤", "👨‍🏭", "👩‍🔧"],
+                correct: 1
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedOption = null;
+        const questionElement = document.getElementById('question');
+        const optionsContainer = document.getElementById('options-container');
+        const feedbackElement = document.getElementById('feedback');
+        const scoreValueElement = document.getElementById('score-value');
+        const nextButton = document.getElementById('next-btn');
+        const celebrationElement = document.getElementById('celebration');
+        const progressBar = document.getElementById('progress-bar');
+        
+        function initGame() {
+            currentQuestionIndex = 0;
+            score = 0;
+            updateScore();
+            updateProgress();
+            loadQuestion(currentQuestionIndex);
+        }
+        
+        function loadQuestion(index) {
+            if (index >= questions.length) {
+                showGameOver();
+                return;
+            }
+            
+            const question = questions[index];
+            questionElement.textContent = question.question;
+            feedbackElement.textContent = "";
+            feedbackElement.className = "feedback";
+            selectedOption = null;
+            nextButton.disabled = true;
+            nextButton.textContent = "التالي";
+            
+            optionsContainer.innerHTML = "";
+            question.options.forEach((option, i) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.textContent = option;
+                optionElement.addEventListener('click', () => selectOption(i, optionElement));
+                optionsContainer.appendChild(optionElement);
+            });
+        }
+        
+        function showGameOver() {
+            questionElement.textContent = "🎉 أحسنت! لقد أكملت جميع الأسئلة! 🎉";
+            optionsContainer.innerHTML = "";
+            feedbackElement.textContent = `درجتك النهائية: ${score} من ${questions.length}`;
+            nextButton.disabled = false;
+            nextButton.textContent = "إعادة اللعبة";
+            progressBar.style.width = "100%";
+        }
+        
+        function selectOption(index, optionElement) {
+            if (selectedOption !== null) return;
+            
+            selectedOption = index;
+            const question = questions[currentQuestionIndex];
+            
+            document.querySelectorAll('.option').forEach(el => {
+                el.style.border = '3px solid #ffb6c1';
+                el.style.transform = 'scale(1)';
+            });
+            
+            optionElement.style.border = '3px solid #ff4d94';
+            optionElement.style.transform = 'scale(1.05)';
+            
+            if (index === question.correct) {
+                feedbackElement.textContent = "أحسنت! إجابة صحيحة 🎉";
+                feedbackElement.className = "feedback correct";
+                score++;
+                updateScore();
+                createConfetti();
+            } else {
+                feedbackElement.textContent = `ليس صحيح! الجواب الصحيح هو ${question.options[question.correct]}`;
+                feedbackElement.className = "feedback wrong";
+            }
+            
+            nextButton.disabled = false;
+        }
+        
+        function updateScore() {
+            scoreValueElement.textContent = score;
+        }
+        
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+        
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                updateProgress();
+                loadQuestion(currentQuestionIndex);
+            } else {
+                currentQuestionIndex++;
+                updateProgress();
+                loadQuestion(currentQuestionIndex);
+            }
+        }
+        
+        function createConfetti() {
+            celebrationElement.style.display = 'block';
+            celebrationElement.innerHTML = '';
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                const colors = ['#ff4d94', '#ff85b8', '#ffb6c1', '#ffd6e7', '#ffebf3', '#ffffff'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.backgroundColor = randomColor;
+                
+                const size = Math.random() * 10 + 5;
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.top = `${Math.random() * 100}%`;
+                
+                const animationDuration = Math.random() * 3 + 2;
+                confetti.style.animation = `fall ${animationDuration}s linear forwards`;
+                
+                celebrationElement.appendChild(confetti);
+            }
+            
+            setTimeout(() => {
+                celebrationElement.style.display = 'none';
+            }, 3000);
+        }
+        
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        nextButton.addEventListener('click', function() {
+            if (currentQuestionIndex < questions.length) {
+                nextQuestion();
+            } else {
+                initGame();
+            }
+        });
+        
+        initGame();
+    </script>
+</body>
+</html>
