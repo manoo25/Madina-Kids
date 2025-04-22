@@ -261,6 +261,8 @@
         }
         
         function showGameOver() {
+            const correctSound = new Audio('./imgs/رائع جدا.mp3');
+            correctSound.play();
             questionElement.textContent = "🎉 أحسنت! لقد أكملت جميع الأسئلة! 🎉";
             fruitsContainer.innerHTML = "";
             feedbackElement.textContent = `درجتك النهائية: ${score} من ${questions.length}`;
@@ -284,6 +286,8 @@
             fruitElement.style.transform = 'scale(1.05)';
             
             if (fruit === question.correctFruit) {
+                const correctSound = new Audio('./imgs/أحسنت.mp3');
+                correctSound.play();
                 feedbackElement.textContent = "أحسنت! إجابة صحيحة 🎉";
                 feedbackElement.className = "feedback correct";
                 score++;
