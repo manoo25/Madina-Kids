@@ -429,6 +429,8 @@
                 const scenario = scenarios[currentScenario];
                 
                 if (selectedIndex === scenario.correctAnswer) {
+                    const correctSound = new Audio('./imgs/أحسنت.mp3');
+                    correctSound.play();
                     // إجابة صحيحة
                     btn.classList.add('correct');
                     feedbackEl.textContent = scenario.feedback;
@@ -495,6 +497,8 @@
             
             // نهاية اللعبة
             function endGame() {
+                const correctSound = new Audio('./imgs/رائع جدا.mp3');
+                correctSound.play();
                 // إعداد عرض النتيجة
                 scenarioEl.innerHTML = `
                     <div class="result-container">
