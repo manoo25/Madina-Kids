@@ -187,6 +187,8 @@
                 }
                 
                 if (roundWon) {
+                    const correctSound = new Audio('./imgs/أحسنت.mp3');
+                    correctSound.play();
                     status.textContent = `الفائز هو ${currentPlayer}! 🎉`;
                     playerTurn.textContent = '';
                     gameActive = false;
@@ -194,6 +196,8 @@
                 }
                 
                 if (!gameState.includes('')) {
+                    const correctSound = new Audio('./imgs/تعادل.mp3');
+                    correctSound.play();
                     status.textContent = 'تعادل! 😊';
                     playerTurn.textContent = '';
                     gameActive = false;
