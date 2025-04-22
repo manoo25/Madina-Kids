@@ -355,6 +355,8 @@
                 if (isMatch) {
                     disableMatchedCards();
                     matchedPairs++;
+                    const correctSound = new Audio('./imgs/أحسنت.mp3');
+                    correctSound.play();
                     
                     if (matchedPairs === emojis.length) {
                         setTimeout(() => {
@@ -402,6 +404,7 @@
             
             // End game
             function endGame() {
+              
                 clearInterval(timer);
                 finalMoves.textContent = moves;
                 finalTime.textContent = timerDisplay.textContent;
