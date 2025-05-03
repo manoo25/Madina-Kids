@@ -294,6 +294,8 @@
                 updateScore();
                 createConfetti();
             } else {
+                 const correctSound = new Audio('./imgs/تعادل.mp3');
+                    correctSound.play();
                 feedbackElement.textContent = `ليس صحيح! الجواب الصحيح هو ${question.correctFruit}`;
                 feedbackElement.className = "feedback wrong";
             }
