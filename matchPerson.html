@@ -305,7 +305,7 @@
             optionElement.style.transform = 'scale(1.05)';
             
             if (index === question.correct) {
-                const correctSound = new Audio('./imgs/أحسنت.mp3');
+                   const correctSound = new Audio('./imgs/رائع جدا.mp3');
                 correctSound.play();
                 feedbackElement.textContent = "أحسنت! إجابة صحيحة 🎉";
                 feedbackElement.className = "feedback correct";
@@ -313,6 +313,8 @@
                 updateScore();
                 createConfetti();
             } else {
+                   const correctSound = new Audio('./imgs/تعادل.mp3');
+                    correctSound.play();
                 feedbackElement.textContent = `ليس صحيح! الجواب الصحيح هو ${question.options[question.correct]}`;
                 feedbackElement.className = "feedback wrong";
             }
