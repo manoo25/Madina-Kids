@@ -708,8 +708,11 @@
               </footer>
               <!-- End Footer -->
 
-    <script>
- function playSound(letter) {
+   <script>
+// متغير لحفظ المرجع للصوت الحالي
+let currentAudio = null;
+
+function playSound(letter) {
     const sounds = {
         'alif': './imgs/Ar-audio/ألف.mp3',
         'baa': './imgs/Ar-audio/باء.mp3',
@@ -742,14 +745,19 @@
     };
 
     if (sounds[letter]) {
-        const audio = new Audio(sounds[letter]);
-        audio.play().catch(error => console.error("فشل تشغيل الصوت:", error));
+        // إذا كان هناك صوت يعمل حالياً، أوقفه
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
+        
+        // قم بإنشاء وتشغيل الصوت الجديد
+        currentAudio = new Audio(sounds[letter]);
+        currentAudio.play().catch(error => console.error("فشل تشغيل الصوت:", error));
     } else {
         console.warn("لا يوجد صوت لهذا الحرف:", letter);
     }
 }
-
-
-    </script>
+</script>
 </body>
 </html>
