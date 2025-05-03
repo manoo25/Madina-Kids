@@ -69,6 +69,12 @@ html {
 .navbar .dr-li li a:hover {
     background-color: #0078FF;
 }
+nav img{
+    width:9rem;
+ position: relative;
+ top: -16px;
+ left: 25%;
+}
 
 .navbar a::before {
     content: '';
@@ -397,12 +403,7 @@ p {
     overflow: hidden;
     position: relative;
 }
-nav img{
-    width:9rem;
- position: relative;
- top: -16px;
- left: 25%;
-}
+
 .ti-back {
     background-image: url(../imgs/dots.png);
     height: 4vh;
@@ -842,7 +843,7 @@ height: 100%;
 
 }
 
-.team .item:hover .photo .card-cover .cover-contain {
+/* .team .item:hover .photo .card-cover .cover-contain {
     opacity: 1;
     position: relative;
     left: 0;
@@ -852,10 +853,13 @@ height: 100%;
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.925);
+} */
+.team .item:hover .photo img {
+ transform: scale(1.2);
 }
 
 .team .card .photo:hover img {
-    transform: scale(1.2);
+    transform: scale(1.25);
 }
 
 .team .card .photo .card-cover .cover-contain a {
