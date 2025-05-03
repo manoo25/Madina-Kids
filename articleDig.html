@@ -480,33 +480,39 @@
       </footer>
       <!-- End Footer -->
 
-  <script>
-    function playSound(letter) {
-       const sounds = {
-           '0': './imgs/Dig-audio/صفر.mp3',
-           '1': './imgs/Dig-audio/واحد.mp3',
-           '2': './imgs/Dig-audio/إثنان.mp3',
-           '3': './imgs/Dig-audio/ثلاثة.mp3',
-           '4': './imgs/Dig-audio/اربعة.mp3',
-           '5': './imgs/Dig-audio/خمسة.mp3',
-           '6': './imgs/Dig-audio/سته.mp3',
-           '7': './imgs/Dig-audio/سبعة.mp3',
-           '8': './imgs/Dig-audio/ثمانية.mp3',
-           '9': './imgs/Dig-audio/تسعة.mp3',
-           '10': './imgs/Dig-audio/عشرة.mp3',
-         
-       
-       };
-   
-       if (sounds[letter]) {
-           const audio = new Audio(sounds[letter]);
-           audio.play().catch(error => console.error("فشل تشغيل الصوت:", error));
-       } else {
-           console.warn("لا يوجد صوت لهذا الحرف:", letter);
-       }
-   }
-   
-   
-       </script>
+<script>
+// متغير لحفظ المرجع للصوت الحالي (يجب أن يكون مشتركاً مع الكود السابق إذا كان في نفس الصفحة)
+let currentAudio = null;
+
+function playSound(letter) {
+    const sounds = {
+        '0': './imgs/Dig-audio/صفر.mp3',
+        '1': './imgs/Dig-audio/واحد.mp3',
+        '2': './imgs/Dig-audio/إثنان.mp3',
+        '3': './imgs/Dig-audio/ثلاثة.mp3',
+        '4': './imgs/Dig-audio/اربعة.mp3',
+        '5': './imgs/Dig-audio/خمسة.mp3',
+        '6': './imgs/Dig-audio/سته.mp3',
+        '7': './imgs/Dig-audio/سبعة.mp3',
+        '8': './imgs/Dig-audio/ثمانية.mp3',
+        '9': './imgs/Dig-audio/تسعة.mp3',
+        '10': './imgs/Dig-audio/عشرة.mp3'
+    };
+
+    if (sounds[letter]) {
+        // إذا كان هناك صوت يعمل حالياً، أوقفه
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
+        
+        // قم بإنشاء وتشغيل الصوت الجديد
+        currentAudio = new Audio(sounds[letter]);
+        currentAudio.play().catch(error => console.error("فشل تشغيل الصوت:", error));
+    } else {
+        console.warn("لا يوجد صوت لهذا الرقم:", letter);
+    }
+}
+</script>
 </body>
 </html>
