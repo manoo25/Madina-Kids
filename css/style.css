@@ -397,7 +397,12 @@ p {
     overflow: hidden;
     position: relative;
 }
-
+nav img{
+    width:9rem;
+ position: relative;
+ top: -16px;
+ left: 25%;
+}
 .ti-back {
     background-image: url(../imgs/dots.png);
     height: 4vh;
