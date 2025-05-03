@@ -440,6 +440,8 @@
                     changeCharacter('happy');
                 } else {
                     // إجابة خاطئة
+                       const correctSound = new Audio('./imgs/تعادل.mp3');
+                    correctSound.play();
                     btn.classList.add('incorrect');
                     feedbackEl.textContent = scenario.feedback;
                     feedbackEl.classList.add('incorrect');
