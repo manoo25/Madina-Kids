@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+  
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/loading.css">
+<script src="./js/loading.js" defer></script>
+
+
+    <title>مدينة الأطفال - بيت جدتى</title>
+    <style>
+        *{
+            transition: all ease 0.5s;
+        }
+        :root {
+            --primary-color: #E91E63; /* وردي غامق */
+            --secondary-color: #F8BBD0; /* وردي فاتح */
+            --light-color: #FCE4EC; /* وردي فاتح جداً */
+            --dark-color: #C2185B; /* وردي داكن */
+            --accent-color: #FF80AB; /* وردي متوسط */
+            --text-color: #333;
+            --dark-text: #2b2828;
+            --head-text:18px;
+            --mainhead-text:22px;
+        }
+        
+        body {
+            font-family: 'Tajawal', 'Arial', sans-serif;
+            background-color: #FFF5F7; /* خلفية وردية فاتحة */
+            color: var(--text-color);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1250px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "✿";
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.1;
+            right: -50px;
+            top: -50px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-top: 50px;
+            border-right: 5px solid var(--accent-color);
+            padding-right: 15px;
+        }
+        
+        h3 {
+            color: var(--dark-color);
+            font-size: 1.6rem;
+            margin-top: 30px;
+        }
+        h4 {
+            color: var(--dark-text);
+            font-size: 1.8rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        h4:hover {
+            color: var(--dark-color);
+        }
+        
+        .intro {
+            font-size: 1.2rem;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border-right: 5px solid var(--secondary-color);
+            position: relative;
+        }
+        
+        .intro::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23E91E63" d="M50 0c27.6 0 50 22.4 50 50S77.6 100 50 100 0 77.6 0 50 22.4 0 50 0zm0 20c-16.6 0-30 13.4-30 30s13.4 30 30 30 30-13.4 30-30-13.4-30-30-30z"/></svg>');
+            background-repeat: no-repeat;
+            opacity: 0.1;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+        
+        .pillars-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .pillar-card {
+            background-color: var(--light-color);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .pillar-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pillar-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .ethics-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .ethic-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-right: 3px solid var(--secondary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .ethic-icon {
+            font-size: 1.8rem;
+            margin-left: 15px;
+            color: var(--dark-color);
+            flex-shrink: 0;
+        }
+        
+        .quran-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .quran-verse {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 2;
+        }
+        
+        .quran-ref {
+            font-style: italic;
+        }
+        
+        .activity {
+            display: flex;
+            align-items: center;
+            background-color: var(--light-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .activity-icon {
+            font-size: 2rem;
+            margin-left: 20px;
+            color: var(--accent-color);
+            flex-shrink: 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--dark-color);
+            color: white;
+            margin-top: 50px;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .hadith-box {
+            background-color: #FFF0F5;
+            border-right: 5px solid var(--accent-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        .contain-item {
+          
+            box-sizing: border-box;
+border: solid 1rem var(--secondary-color);
+        }
+        .contain-item img{
+          
+          height: 300px;
+        }
+        .contain-item .cover{
+position: absolute;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: #122c498c;
+transform: translateY(100%);
+transition: all ease 0.5s;
+        }
+        .contain-item:hover .cover{
+            transform: translateY(0);
+        }
+        .contain-item:hover {
+            border: solid 1rem var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .pillars-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .lesson-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .lesson-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .lesson-img {
+            width: 100%;
+            height: 300px;
+            object-fit: fill;
+            border-bottom: 5px solid var(--secondary-color);
+        }
+        
+        .lesson-content {
+            padding: 20px;
+        }
+        
+        .lesson-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+        
+        .lesson-desc {
+            margin-bottom: 15px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body >
+ 
+ 
+    
+    <div class="container">
+    
+     
+        <section>
+          <h2>
+       القط الصغير والحلزون
+          </h2>
+          
+          <div class="lesson-card">
+          <video style="height: 70vh;" src="./imgs/grandmaVid/القط الصغير والحلزون.mp4" class="video-player w-100" controls> </video>
+             
+          </div>
+        </section>
+        <section>
+          <h2>
+    مش عاوز استحمى
+          </h2>
+          
+          <div class="lesson-card">
+          <video style="height: 70vh;" src="./imgs/grandmaVid/مش عاوز استحمى.mp4" class="video-player w-100" controls> </video>
+             
+          </div>
+        </section>
+        <section>
+          <h2>
+    الابريق
+          </h2>
+          
+          <div class="lesson-card">
+          <video style="height: 70vh;" src="./imgs/grandmaVid/الابريق.mp4" class="video-player w-100" controls> </video>
+             
+          </div>
+        </section>
+        <section>
+          <h2>
+   الثعلب الجائع
+          </h2>
+          
+          <div class="lesson-card">
+          <video style="height: 70vh;" src="./imgs/grandmaVid/الثعلب الجائع.mp4" class="video-player w-100" controls> </video>
+             
+          </div>
+        </section>
+        <section>
+          <h2>
+  الاسد العجوز
+          </h2>
+          
+          <div class="lesson-card">
+          <video style="height: 70vh;" src="./imgs/grandmaVid/الاسد العجوز.mp4" class="video-player w-100" controls> </video>
+             
+          </div>
+        </section>
+       
+   
+    </div>
+
+      <!-- Start Footer -->
+      <footer style="background-color: #001328;">
+        <div  class="container-fluid">
+          <div class="logo-content">
+            <img class="logoo" src="imgs/new/logo2.png" alt="Logo" />
+            <p>
+              انضم إلينا في تشكيل مستقبل مشرق! شاهد لماذا تختارنا العائلات في جميع أنحاء البلاد لتكون المدرسة التمهيدية الخاصة بهم.
+    
+            
+            </p>
+          </div>
+          <div class="links">
+            <div class="link">
+              <h3>روابط هامة</h3>
+              <ul >
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="./grandma.html"> بيت جدتي</a></li>
+                <li><a href="./Mharaty.html"> مهاراتي</a></li>
+                <li><a href="artcleIslam.html"> فرائض وأخلاق</a></li>
+    
+    
+              </ul>
+            </div>
+            <div class="link">
+              <h3>هيا نلعب</h3>
+              <ul>
+                <li><a href="learnAr.html"> لعبة تعلم العربية</a></li>
+                <li><a href="learnDigits.html">لعبة تعلم الأرقام</a></li>
+                <li><a href="eatingPlay.html">لعبة آداب الطعام </a></li>
+    
+              </ul>
+            </div>
+    
+            <div class="link">
+              <h3>اللغة</h3>
+              <ul>
+                <li><a >العربية</a></li>
+              </ul>
+            </div>
+    
+    
+    
+          </div>
+          <div class="subscribe-us ">
+            <h3>مفالات مهمة</h3>
+           <div class="article d-flex flex-column gap-4">
+            <div class="item">
+             <div class="pic">
+              <img src="./imgs/new/Ar.jpg" alt="">
+              <div class="Fcover">
+    <a href="./articleAr.html" class="fa-solid fa-link"></a>
+              </div>
+             </div>
+            
+              <p class="ptitle">
+                طرق فعّالة لتعليم الأطفال الحروف
+              </p>
+            </div>
+            <div class="item">
+             <div class="pic">
+              <img src="./imgs/new/dig.png" alt="">
+              <div class="Fcover">
+    <a href="#" class="fa-solid fa-link"></a>
+              </div>
+             </div>
+            
+              <p class="ptitle">
+                طرق فعّالة لتعليم الأطفال الأرقام
+              </p>
+            </div>
+           </div>
+           
+          </div>
+        </div>
+    
+        
+        <div class="copyright text-white">
+          حقوق النشر &copy; 2025 .Madina كل الحقوق محفوظة.
+        </div>
+      </footer>
+      <!-- End Footer -->
+   
+      <script>
+    
+         const videos = document.querySelectorAll('.video-player');
+        
+    
+        videos.forEach(video => {
+            video.addEventListener('play', function() {
+              
+                videos.forEach(otherVideo => {
+                    if (otherVideo !== video && !otherVideo.paused) {
+                        otherVideo.pause();
+                    }
+                });
+            });
+        });
+      </script>
+</body>
+</html>
