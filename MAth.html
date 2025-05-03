@@ -334,7 +334,7 @@
                 gameActive = false;
                 
                 if (selectedOption == currentAnswer) {
-                    const correctSound = new Audio('./imgs/أحسنت.mp3');
+                    const correctSound = new Audio('./imgs/رائع جدا.mp3');
                     correctSound.play();
                     // إجابة صحيحة
                     btn.classList.add('correct');
@@ -349,6 +349,8 @@
                     }
                 } else {
                     // إجابة خاطئة
+                     const correctSound = new Audio('./imgs/تعادل.mp3');
+                    correctSound.play();
                     btn.classList.add('incorrect');
                     feedbackEl.textContent = `إجابة خاطئة! الإجابة الصحيحة: ${currentAnswer}`;
                     feedbackEl.style.color = '#C62828';
