@@ -218,6 +218,45 @@
             height: 30vh;
             margin-bottom: 30px;
         }
+
+        .lesson-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .lesson-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .lesson-img {
+            width: 100%;
+            height: 300px;
+            object-fit: fill;
+            border-bottom: 5px solid var(--secondary-color);
+        }
+        
+        .lesson-content {
+            padding: 20px;
+        }
+        
+        .lesson-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+        
+        .lesson-desc {
+            margin-bottom: 15px;
+        }
+        
+
+
+
+      
     
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
@@ -396,6 +435,51 @@
                 </div>
             </div>
         </section>
+
+<!-- video  -->
+
+        <section >
+            <h2>كليب الأرقام</h2>
+        
+            
+            <div class="lesson-card mt-2 ">
+                <iframe  class="lesson-img" src="https://www.youtube.com/embed/o43ZteVMQHQ?si=4KinURWmaFqzuJjO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+               
+                <div class="lesson-content">
+                    
+                    <p>هذه الأغنية ستساعد طفلك على حفظ الارقام بسهوبة .</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>تعلم الأرقام باللغة العربية</h2>
+        
+            
+            <div class="lesson-card mt-2">
+                
+                <iframe  class="lesson-img"  src="https://www.youtube.com/embed/NezLpsU_fTw?si=aQBJKhMatIfJhuJ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="lesson-content">
+                   
+                    <p>فى هذا الفيديو سنتعلم حفظ الارقام  باللغة العربية</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>الأرقام العربية من ١ - ١٠</h2>
+        
+            
+            <div class="lesson-card mt-2">
+                <iframe  class="lesson-img" src="https://www.youtube.com/embed/7bnLGZVCP_g?si=tFHdtPGn2_p6nxfH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                 
+                <div class="lesson-content">
+                   
+                    <p>فى هذا الفيديو سنتعلم  الأرقام العربية من ١ - ١٠</p>
+                </div>
+            </div>
+        </section>
+       
+
+
     </div>
     
       <!-- Start Footer -->
@@ -480,39 +564,39 @@
       </footer>
       <!-- End Footer -->
 
-<script>
-// متغير لحفظ المرجع للصوت الحالي (يجب أن يكون مشتركاً مع الكود السابق إذا كان في نفس الصفحة)
-let currentAudio = null;
-
-function playSound(letter) {
-    const sounds = {
-        '0': './imgs/Dig-audio/صفر.mp3',
-        '1': './imgs/Dig-audio/واحد.mp3',
-        '2': './imgs/Dig-audio/إثنان.mp3',
-        '3': './imgs/Dig-audio/ثلاثة.mp3',
-        '4': './imgs/Dig-audio/اربعة.mp3',
-        '5': './imgs/Dig-audio/خمسة.mp3',
-        '6': './imgs/Dig-audio/سته.mp3',
-        '7': './imgs/Dig-audio/سبعة.mp3',
-        '8': './imgs/Dig-audio/ثمانية.mp3',
-        '9': './imgs/Dig-audio/تسعة.mp3',
-        '10': './imgs/Dig-audio/عشرة.mp3'
-    };
-
-    if (sounds[letter]) {
-        // إذا كان هناك صوت يعمل حالياً، أوقفه
-        if (currentAudio) {
-            currentAudio.pause();
-            currentAudio.currentTime = 0;
-        }
+      <script>
+        // متغير لحفظ المرجع للصوت الحالي (يجب أن يكون مشتركاً مع الكود السابق إذا كان في نفس الصفحة)
+        let currentAudio = null;
         
-        // قم بإنشاء وتشغيل الصوت الجديد
-        currentAudio = new Audio(sounds[letter]);
-        currentAudio.play().catch(error => console.error("فشل تشغيل الصوت:", error));
-    } else {
-        console.warn("لا يوجد صوت لهذا الرقم:", letter);
-    }
-}
-</script>
+        function playSound(letter) {
+            const sounds = {
+                '0': './imgs/Dig-audio/صفر.mp3',
+                '1': './imgs/Dig-audio/واحد.mp3',
+                '2': './imgs/Dig-audio/إثنان.mp3',
+                '3': './imgs/Dig-audio/ثلاثة.mp3',
+                '4': './imgs/Dig-audio/اربعة.mp3',
+                '5': './imgs/Dig-audio/خمسة.mp3',
+                '6': './imgs/Dig-audio/سته.mp3',
+                '7': './imgs/Dig-audio/سبعة.mp3',
+                '8': './imgs/Dig-audio/ثمانية.mp3',
+                '9': './imgs/Dig-audio/تسعة.mp3',
+                '10': './imgs/Dig-audio/عشرة.mp3'
+            };
+        
+            if (sounds[letter]) {
+                // إذا كان هناك صوت يعمل حالياً، أوقفه
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio.currentTime = 0;
+                }
+                
+                // قم بإنشاء وتشغيل الصوت الجديد
+                currentAudio = new Audio(sounds[letter]);
+                currentAudio.play().catch(error => console.error("فشل تشغيل الصوت:", error));
+            } else {
+                console.warn("لا يوجد صوت لهذا الرقم:", letter);
+            }
+        }
+        </script>
 </body>
 </html>
