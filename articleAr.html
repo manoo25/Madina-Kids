@@ -613,13 +613,38 @@
         </section>
         
         <section>
-            <h2>أغنية الحروف العربية</h2>
-            <p>استمع إلى هذه الأغنية الممتعة لتتعلم الحروف العربية بسهولة:</p>
+            <h2>تعليم الحروف العربية للاطفال</h2>
+        
             
-            <div class="lesson-card">
+            <div class="lesson-card mt-2">
+              
+                <iframe  class="lesson-img" src="https://www.youtube.com/embed/D-NCDD8TGJ0?si=I03_ZJnawjKCZ38L" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="lesson-content">
+                    
+                    <p>تعليم الحروف العربية للاطفال الصغار مع الأمثلة - أ أناناس ب بطريق ت تمساح - Arabic letters for kids</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>أغنية ألف باء تاء الحروف</h2>
+        
+            
+            <div class="lesson-card mt-2">
+                <iframe  class="lesson-img" src="https://www.youtube.com/embed/WohgkFHNF9o?si=xhaG4mkXiaIyISTa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="lesson-content">
+                   
+                    <p>هذه الأغنية ستساعدك على حفظ ترتيب الحروف العربية ونطقها الصحيح بطريقة ممتعة وسهلة.</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>أغنية الحروف العربية</h2>
+        
+            
+            <div class="lesson-card mt-2">
                 <iframe class="lesson-img" src="https://www.youtube.com/embed/hVV87EFkBKY?si=9wGOMXbz0W5izBxG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 <div class="lesson-content">
-                    <h3 class="lesson-title">أغنية الحروف الأبجدية</h3>
+                   
                     <p>هذه الأغنية ستساعدك على حفظ ترتيب الحروف العربية ونطقها الصحيح بطريقة ممتعة وسهلة.</p>
                 </div>
             </div>
@@ -708,56 +733,57 @@
               </footer>
               <!-- End Footer -->
 
-   <script>
-// متغير لحفظ المرجع للصوت الحالي
-let currentAudio = null;
-
-function playSound(letter) {
-    const sounds = {
-        'alif': './imgs/Ar-audio/ألف.mp3',
-        'baa': './imgs/Ar-audio/باء.mp3',
-        'taa': './imgs/Ar-audio/تاء.mp3',
-        'thaa': './imgs/Ar-audio/ثاااء.mp3',
-        'jeem': './imgs/Ar-audio/جييم.mp3',
-        'haa': './imgs/Ar-audio/حاء.mp3',
-        'khaa': './imgs/Ar-audio/خاء.mp3',
-        'daal': './imgs/Ar-audio/دال.mp3',
-        'dhaal': './imgs/Ar-audio/ذال.mp3',
-        'raa': './imgs/Ar-audio/راء.mp3',
-        'zaay': './imgs/Ar-audio/زاى.mp3',
-        'seen': './imgs/Ar-audio/سين.mp3',
-        'sheen': './imgs/Ar-audio/شين.mp3',
-        'saad': './imgs/Ar-audio/صاد.mp3',
-        'daad': './imgs/Ar-audio/ضاد.mp3',
-        'taa2': './imgs/Ar-audio/طاء.mp3',
-        'thaa2': './imgs/Ar-audio/ظاء.mp3',
-        'ayn': './imgs/Ar-audio/عين.mp3',
-        'ghayn': './imgs/Ar-audio/غين.mp3',
-        'faa': './imgs/Ar-audio/فاء.mp3',
-        'qaaf': './imgs/Ar-audio/قاف.mp3',
-        'kaaf': './imgs/Ar-audio/كاف.mp3',
-        'laam': './imgs/Ar-audio/لام.mp3',
-        'meem': './imgs/Ar-audio/ميم.mp3',
-        'noon': './imgs/Ar-audio/نون.mp3',
-        'haa2': './imgs/Ar-audio/هاء.mp3',
-        'waaw': './imgs/Ar-audio/واو.mp3',
-        'yaa': './imgs/Ar-audio/ياء.mp3'
-    };
-
-    if (sounds[letter]) {
-        // إذا كان هناك صوت يعمل حالياً، أوقفه
-        if (currentAudio) {
-            currentAudio.pause();
-            currentAudio.currentTime = 0;
-        }
-        
-        // قم بإنشاء وتشغيل الصوت الجديد
-        currentAudio = new Audio(sounds[letter]);
-        currentAudio.play().catch(error => console.error("فشل تشغيل الصوت:", error));
-    } else {
-        console.warn("لا يوجد صوت لهذا الحرف:", letter);
-    }
-}
-</script>
+              <script>
+                // متغير لحفظ المرجع للصوت الحالي
+                let currentAudio = null;
+                
+                function playSound(letter) {
+                    const sounds = {
+                        'alif': './imgs/Ar-audio/ألف.mp3',
+                        'baa': './imgs/Ar-audio/باء.mp3',
+                        'taa': './imgs/Ar-audio/تاء.mp3',
+                        'thaa': './imgs/Ar-audio/ثاااء.mp3',
+                        'jeem': './imgs/Ar-audio/جييم.mp3',
+                        'haa': './imgs/Ar-audio/حاء.mp3',
+                        'khaa': './imgs/Ar-audio/خاء.mp3',
+                        'daal': './imgs/Ar-audio/دال.mp3',
+                        'dhaal': './imgs/Ar-audio/ذال.mp3',
+                        'raa': './imgs/Ar-audio/راء.mp3',
+                        'zaay': './imgs/Ar-audio/زاى.mp3',
+                        'seen': './imgs/Ar-audio/سين.mp3',
+                        'sheen': './imgs/Ar-audio/شين.mp3',
+                        'saad': './imgs/Ar-audio/صاد.mp3',
+                        'daad': './imgs/Ar-audio/ضاد.mp3',
+                        'taa2': './imgs/Ar-audio/طاء.mp3',
+                        'thaa2': './imgs/Ar-audio/ظاء.mp3',
+                        'ayn': './imgs/Ar-audio/عين.mp3',
+                        'ghayn': './imgs/Ar-audio/غين.mp3',
+                        'faa': './imgs/Ar-audio/فاء.mp3',
+                        'qaaf': './imgs/Ar-audio/قاف.mp3',
+                        'kaaf': './imgs/Ar-audio/كاف.mp3',
+                        'laam': './imgs/Ar-audio/لام.mp3',
+                        'meem': './imgs/Ar-audio/ميم.mp3',
+                        'noon': './imgs/Ar-audio/نون.mp3',
+                        'haa2': './imgs/Ar-audio/هاء.mp3',
+                        'waaw': './imgs/Ar-audio/واو.mp3',
+                        'yaa': './imgs/Ar-audio/ياء.mp3'
+                    };
+                
+                    if (sounds[letter]) {
+                        // إذا كان هناك صوت يعمل حالياً، أوقفه
+                        if (currentAudio) {
+                            currentAudio.pause();
+                            currentAudio.currentTime = 0;
+                        }
+                        
+                        // قم بإنشاء وتشغيل الصوت الجديد
+                        currentAudio = new Audio(sounds[letter]);
+                        currentAudio.play().catch(error => console.error("فشل تشغيل الصوت:", error));
+                    } else {
+                        console.warn("لا يوجد صوت لهذا الحرف:", letter);
+                    }
+                }
+                </script>
+    
 </body>
 </html>
